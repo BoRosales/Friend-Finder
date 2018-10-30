@@ -1,4 +1,4 @@
-// NPM MODULES USED
+// DEPENDENCIES
 // =============================================
 let express = require('express');
 let path = require('path');
@@ -13,13 +13,15 @@ let PORT = process.env.PORT || 1337;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// PEOPLE DATA
+// FRIENDS DATA
 // =============================================
 
 
 
 // ROUTES
 // =============================================
+
+// Default route that leads to homepage
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
 });
