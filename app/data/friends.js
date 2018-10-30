@@ -1,3 +1,6 @@
+// ARRAY OF OBJECTS OF FRIENDS
+// FRIENDS DATA
+// =============================================
 let friends = [
     {
         "name":"Ahmed",

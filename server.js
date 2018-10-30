@@ -13,11 +13,6 @@ let PORT = process.env.PORT || 1337;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// FRIENDS DATA
-// =============================================
-
-
-
 // ROUTES
 // =============================================
 
