@@ -127,8 +127,36 @@
             <option value="5">5 (Very likely)</option>
         </select>
 
-        <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 25px">Submit</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="add-btn" style="margin-top: 25px">Submit</button>
     </div>
+
+    <script type="text/javascript">
+        $("#add-btn").on("click", function (event) {
+            event.preventDefault();
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    $("q1").val(),
+                    $("q2").val(),
+                    $("q3").val(),
+                    $("q4").val(),
+                    $("q5").val(),
+                    $("q6").val(),
+                    $("q7").val(),
+                    $("q8").val(),
+                    $("q9").val(),
+                    $("q10").val(),
+                ]
+            };
+
+            $.post("/api/friends", newFriend)
+                .then(function (data) {
+                    console.log("survey.html", data);
+                    alert("Adding friend...");
+                });
+        });
+    </script>
 
 </body>
 

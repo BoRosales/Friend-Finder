@@ -1,19 +1,12 @@
-// DISPLAYS ALL THE FRIENDS
-app.get("/api/friends", function(req, res) {
-    return res.json(friends);
-  });
+//DEPENDENCIES
+var path = require('path');
+var friendsInfo = require("../data/friends.js");
 
-// CREATES NEW FRIENDS
-app.post("/api/friends", function(req, res) {
+//ROUTES
+module.exports = function(app) {
 
-    let newFriend = req.body;
-
-    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
-
-    console.log(newFriend);
-
-    friends.push(newFriend);
-
-    res.json(newFriend);
-
-});
+    //API GET ROUTE FOR FRIENDS.JS    
+    app.get("/api/friends", function(req, res) {
+        res.json(friendsInfo)
+    });
+}

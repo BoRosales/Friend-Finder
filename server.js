@@ -1,32 +1,31 @@
 // DEPENDENCIES
-// =============================================
-let express = require('express');
-let path = require('path');
+// ==============================================================================
+var express = require("express");
+var bodyParser = require("body-parser");
+var path = require('path');
 
-// SET UP EXPRESS APP
-// =============================================
-let app = express();
-let PORT = process.env.PORT || 1337;
+// ==============================================================================
+// EXPRESS CONFIGURATION
+// ==============================================================================
+var app = express();
+var PORT = process.env.PORT || 8080;
 
-// SET UP EXPRESS TO HANDLE DATA PARSING
-// =============================================
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// ROUTES
-// =============================================
-// Default route that leads to homepage
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
-});
+// ================================================================================
+// ROUTER
+// The below points our server to a series of "route" files.
+// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
+// ================================================================================
 
-app.get("/survey", function(req, res) {
-    res.sendFile(path.join(__dirname, "survey.html"));
-});
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
+// LISTENER
+// =============================================================================
 
-// START LISTENING
-// =============================================
 app.listen(PORT, function() {
-    console.log('App listening on PORT: ' + PORT)
+  console.log("App listening on PORT: " + PORT);
 });
