@@ -1,6 +1,6 @@
 //DEPENDENCIES
 let path = require('path');
-let friendsInfo = require("../data/friends.js");
+let friends = require("../data/friends.js");
 
 //ROUTES
 module.exports = function(app) {
